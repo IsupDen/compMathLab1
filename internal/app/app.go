@@ -105,7 +105,12 @@ func calculate(matrix [][]float64) {
 		fmt.Println(err)
 		return
 	}
-	roots := t.Roots()
-	gauss.PrintRoots(roots)
-	t.Mistake(roots)
+	if det := t.Determinant(); det != 0 {
+		roots := t.Roots()
+		gauss.PrintRoots(roots)
+		t.Mistake(roots)
+	} else {
+		fmt.Println("СЛАУ имеет бесконечное множество решений")
+	}
+
 }
